@@ -19,11 +19,14 @@ Si tout va bien vous pourrez accéder au site de la M2L
 Documents
 ├── DCU
 │   ├── DCU  AppFaq.drawio
-│   ├── DCU.Ddrawio.pdf
+│   ├── DCU.drawio.pdf
 ├── MCD et MLD
 │   ├── MCD M2L.jpg
 │   ├── MCD M2L.loo
 │   ├── MLD M2L.jpg
+├── SiteMap
+│   ├── SiteMap.drawio
+│   ├── SiteMap.drawio.pdf
 ```
 ## Mot de passe :
 - Admin / admin
