@@ -58,6 +58,23 @@ Documents
 | **Utilisateur**   | `User`             | `user`            |
 | **Super-Admin**   | `Super-Admin`      | `super-admin`     |
 
+Voici la section "Technologies utilisées" présentée sous forme de tableau :  
+
+---
+
+## **Technologies utilisées**  
+
+| **Technologie/Outil** | **Utilisation**                                                |
+|------------------------|--------------------------------------------------------------|
+| **HTML, CSS, JavaScript** | Structure, style et interactivité du site web.              |
+| **PHP**                | Gestion du back-end et des interactions avec la base de données. |
+| **MySQL**              | Gestion des données et des utilisateurs.                     |
+| **PHPMyAdmin**              | Pour le système de gestion de base de donnée (SGBD).    |
+| **Balsamiq**           | Création des maquettes d'interface utilisateur.              |
+| **Looping MCD**        | Modélisation du Modèle Conceptuel de Données (MCD).          |
+| **Visual Studio Code** | Logiciel utilisé pour le développement.          |
+
+
 ---
 
 **Projet 2024-2025**  
