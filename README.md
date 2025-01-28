@@ -58,8 +58,6 @@ Documents
 | **Utilisateur**   | `User`             | `user`            |
 | **Super-Admin**   | `Super-Admin`      | `super-admin`     |
 
-Voici la section "Technologies utilisées" présentée sous forme de tableau :  
-
 ---
 
 ## **Technologies utilisées**  
