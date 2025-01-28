@@ -33,6 +33,9 @@ Documents
 ├── DCU
 │   ├── DCU AppFaq.drawio
 │   ├── DCU.drawio.pdf
+├── IHM
+│   ├── IHM M2L.bmpr
+│   ├── IHM M2L.pdf
 ├── MCD et MLD
 │   ├── MCD M2L.jpg
 │   ├── MCD M2L.loo
