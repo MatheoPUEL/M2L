@@ -18,7 +18,7 @@ Ce projet a été réalisé dans le cadre d'un **projet de classe de 1SIO en opt
 |------------------------|---------------------------------------------------------------------------------------|
 | **Cloner le dépôt**    | `git clone https://github.com/MatheoPUEL/M2L.git`                                     |
 | **Lancer les serveurs**| Démarrer les services **Apache** et **MySQL**                                         |
-| **Importer la base**   | Importer le fichier `.SQL` disponible dans la documentation via l'interface MySQL    |
+| **Importer la base**   | Importer le fichier `.SQL` disponible dans la documentation via l'interface de PHPMyAdmin    |
 | **Accéder au site**    | Rendez-vous sur [https://localhost/](https://localhost/)                              |
 
 Si toutes les étapes sont correctement réalisées, vous aurez accès au site **M2L Tennis**.
