@@ -43,6 +43,7 @@ Documents
 ├── SiteMap
 │   ├── SiteMap.drawio
 │   ├── SiteMap.drawio.pdf
+├── appfaq.sql
 ```
 
 - **DCU** : Diagrammes de Cas d'Utilisation (Draw.io et PDF).  
