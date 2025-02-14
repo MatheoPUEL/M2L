@@ -1,0 +1,1 @@
+# C'est un dossier temporaire car dans la finalité tout sera dans la même page c'est juste que maintenant on à pas encore le php pour assembler tout ça. C'est 2 page qui seron différence si on est connecter ou pas. 

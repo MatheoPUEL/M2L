@@ -1,0 +1,19 @@
+footer {
+    
+    color:#5A5858;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+
+}
+
+.annee, h2 {
+    text-align: center;
+
+}
+.annee h3 {
+    font-size: x-small;
+}

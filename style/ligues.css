@@ -1,0 +1,245 @@
+header {
+    top: 0px;
+    position: relative;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 675px;
+
+}
+header div {
+    position: absolute;
+
+    height: 200px;
+    z-index: 99;
+
+}
+header div h1 {
+    font-weight: bold;
+
+    z-index: 80;
+    background-color: #F0EAD2;
+
+    font-size: 65px;
+
+    padding: 25px;
+    border-radius: 0px 0px 60px 0px;
+    position: relative;
+    top: -45px;
+    letter-spacing: 10px;
+}
+section h1 {
+    color: #5A5858;
+    font-size: 45px;
+}
+section p {
+    font-size: large;
+}
+.bottom {
+    position: relative;
+    top: -90px;
+    left: -1px;
+}
+.right {
+    position: relative;
+    top: -238px;
+    left: 502px;
+} 
+.img-header {
+    background-color: white;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 95px;
+
+    position: relative;
+    z-index: 1;
+
+    box-shadow: inset 0px -10px 15px 8px rgba(0,0,0,0.35);
+}
+
+/* Liste de tout les services */
+
+.services {
+    position: relative;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 80%;
+
+    margin-bottom: 100px;
+}
+
+
+
+.grid-location {
+    position: relative;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 100px;
+
+}
+
+.FAQ {
+    position: relative;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 100px;
+
+}
+.questions {
+    position: relative;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+
+
+    margin-bottom: 100px;
+}
+.content-loc {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+.media-loc {
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+
+    display: flex;
+    justify-content: center;
+}
+
+.content-faq {
+    grid-column: 1 / 2;
+    grid-row: 1;
+
+    display: flex;
+    justify-content: center;
+}
+.media-faq {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    padding:0px 100px 0px 150px;
+}
+
+
+form {
+    width: 350px ;
+}
+textarea {
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: none;
+    border: 1px solid #dddddd;
+
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    margin-bottom: 25px;
+
+    outline: none;
+    transition-duration:0.3s;
+    font-family: Alexandria;
+
+}
+textarea:focus{
+    outline: 2px solid #405cf5;
+}
+
+small {
+    font-size: 15px;
+    opacity: 75%;
+}
+.question-post {
+    background-color: #D9D9D9;
+    height: 200px;
+    color: #5A5858;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 80%;
+}
+.no-response {
+    margin-bottom: 50px;
+}
+.question-post p {
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.question-header {
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+
+    padding-right: 50px;
+}
+.question-date_info {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 150px;
+}
+
+.response {
+    background-color: #C7BEBE;
+    height: 200px;
+    color: #5A5858;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 80%;
+    position: relative;
+    left: 50px;
+    top: -50px;
+}
+.response p {
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+.question-footer {
+    display: flex;
+    justify-content: end;
+    margin: 0;
+    height: 50px;
+    padding: 0px 13px 0px 0px;
+
+}
+.question-footer button {
+   padding: 0px 25px 0px 25px;
+   
+   border-radius: 6px;
+   border-width: 0;
+   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+   box-sizing: border-box;
+   color: #fff;
+   cursor: pointer;
+   font-size: 100%;
+
+}
+.blue {
+    background-color: #405cf5;
+    margin-left: 25px;
+}
+.red {
+    background-color: #e74c3c;
+}

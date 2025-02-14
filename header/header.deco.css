@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: aqua;
+}
+nav div {
+    width: 210px;
+    display: flex;
+    justify-content:space-between ;
+    }
+
+nav div a {
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+nav div a:hover {
+    color: rgb(74, 74, 74);
+
+}
