@@ -92,8 +92,8 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
             <!-- Afficher seulement si on est administrateur -->
             <div class="question-footer">
-                <button class="red"><i class="fa-solid fa-trash"></i> &nbsp; Supprimer</button>
-                <button class="blue"><i class="fa-solid fa-reply"></i> &nbsp; Répondre</button>
+                <button onclick="window.location.href = './form/deleteMessage.form.php';" class="red"><i class="fa-solid fa-trash"></i> &nbsp; Supprimer</button>
+                <button onclick="window.location.href = './admin_respond.php';" class="blue"><i class="fa-solid fa-reply"></i> &nbsp; Répondre</button>
             </div>
         </div>
 
@@ -110,7 +110,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
             <!-- Afficher seulement si c'est l'utilisateur qui a posté le message -->
             <div class="question-footer">
-                <button type="submit" class="blue"><i class="fa-solid fa-edit"></i> &nbsp; Editer</button>
+                <button onclick="window.location.href = './editMessage.php';" type="submit" class="blue"><i class="fa-solid fa-edit"></i> &nbsp; Editer</button>
             </div>
         </div>
 

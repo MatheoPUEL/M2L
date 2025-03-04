@@ -11,7 +11,7 @@ $description = "Ma description";
         <h1>Inscription</h1>
 
         <div class="alert-danger">
-            <p>Une erreur est arrivé</p>
+            <p>Une erreur est survenue</p>
         </div>
 
         <label for="regid">Identifiant</label><br>

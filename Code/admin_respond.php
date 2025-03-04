@@ -7,10 +7,10 @@ $description = "Ma description";
 <?php
     require_once('./inc/header.inc.php')
 ?>
-    <h1>Réponse au message: </h1>
-    <p>Le message que la personne a posté.</p>
-    <form action="" method="post">
-        <textarea name="" id="" rows="10" cols="50"></textarea>
+    <form action="" method="post" class="form-container">
+        <h1>Réponse a Jhon doe: </h1>
+        <p>Message de la personne à laquelle on est en train de répondre</p>
+        <textarea name="" id="" rows="10" placeholder="Votre réponse"></textarea>
         <button class="button">Répondre</button>
     </form>
 <?php

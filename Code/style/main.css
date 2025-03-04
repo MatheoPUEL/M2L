@@ -1,4 +1,4 @@
-@import url('./login.inc.css');
+@import url('./form.inc.css');
 @import url('./footer.css');
 @import url("header.co.css");
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
@@ -22,4 +22,28 @@ body {
     padding-left: 5px;
     margin-bottom: 15px;
     border: 2px solid #ff4757;
+}
+.container {
+    width: 80%;
+    margin: 40px;
+}
+.form-container {
+    width: 375px;
+
+    position: relative;
+    margin-top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 30px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fcfcfc;
+
+    box-shadow: 1px 15px 15px -7px rgba(0,0,0,0.48);
+    -webkit-box-shadow: 1px 15px 15px -7px rgba(0,0,0,0.48);
+    -moz-box-shadow: 1px 15px 15px -7px rgba(0,0,0,0.48);
 }

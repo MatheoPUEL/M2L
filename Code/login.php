@@ -11,7 +11,7 @@ $description = "Ma description";
         <h1>Connexion</h1>
 
         <div class="alert-danger">
-            <p>Le mot de passe n'est pas bon</p>
+            <p>Mot de passe incorrect</p>
         </div>
 
         <label for="logid">Identifiant</label><br>
