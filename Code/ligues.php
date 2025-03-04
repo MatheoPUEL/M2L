@@ -97,6 +97,23 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
             </div>
         </div>
 
+        <div class="question-post">
+            <div class="question-header">
+                <div><p>Jhon doe</p></div>
+                <div>
+                    <ul class="question-date_info">
+                        <li>23-04-2024</li>
+                        <li>11h50</li>
+                    </ul>
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
+            <!-- Afficher seulement si c'est l'utilisateur qui a posté le message -->
+            <div class="question-footer">
+                <button type="submit" class="blue"><i class="fa-solid fa-edit"></i> &nbsp; Editer</button>
+            </div>
+        </div>
+
     </section>
 <?php
     require_once('./inc/footer.inc.php')

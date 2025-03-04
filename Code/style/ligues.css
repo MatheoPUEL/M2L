@@ -175,10 +175,9 @@ small {
     font-weight: bold;
     border-radius: 8px;
     width: 80%;
+    margin-top: 50px;
 }
-.no-response {
-    margin-bottom: 50px;
-}
+
 .question-post p {
     padding-left: 50px;
     padding-right: 50px;
