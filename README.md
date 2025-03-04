@@ -29,6 +29,38 @@ Si toutes les étapes sont correctement réalisées, vous aurez accès au site *
 La structure des documents du projet est organisée comme suit :  
 
 ```plaintext
+Code
+├── admin_all_ligues.php
+├── admin_respond.php
+├── index.php
+├── ligues.php
+├── login.php
+├── register.php
+├── form
+│   ├── add.form.php
+│   ├── addMessage.form.php
+│   ├── login.form.php
+│   ├── register.form.php
+├── header
+│   ├── header.deco.css
+├── img
+│   ├── logo.svg
+│   ├── tennis.jpg
+│   └── svg
+│       ├── Bottomcorner.svg
+│       ├── Leftcorner.svg
+├── inc
+│   ├── footer.inc.php
+│   ├── header.inc.php
+│   ├── template.php
+├── style
+│   ├── footer.css
+│   ├── header.co.css
+│   ├── ligues.css
+│   ├── login.inc.css
+│   ├── main.css
+└── temp
+    ├── readme.txt
 Documents
 ├── DCU
 │   ├── DCU AppFaq.drawio
