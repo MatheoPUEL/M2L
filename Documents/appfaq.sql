@@ -78,9 +78,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `pseudo`, `mdp`, `mail`, `id_usertype`, `id_ligue`) VALUES
-(1, 'User', 'user', 'user@m2l.com', 1, 1),
-(2, 'Admin', 'admin', 'admin@m2l.com', 2, 1),
-(3, 'Super-Admin', 'super-admin', 'super-admin@m2l.com', 3, 5);
+(1, 'User', '$2y$10$zH1Ff5S68Mv1P66QgGGYMenADsP84LDMhWM06iJ.v4j5MRqft1oty', 'user@m2l.com', 1, 1),
+(2, 'Admin', '$2y$10$.OiOM5sPEGMLyA6ONUurqOPgZaEHsZnq7mb2GapH74HCC7Z867.mO', 'admin@m2l.com', 2, 1),
+(3, 'Super-Admin', '$2y$10$h2MmUwWo8c18iDI0asBgiOD4qDbOcMZoLphmmNjPYFGlC09KEVjHG', 'super-admin@m2l.com', 3, 5);
 
 -- --------------------------------------------------------
 
