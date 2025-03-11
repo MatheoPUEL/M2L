@@ -1,7 +1,12 @@
 <?php
+session_start();
+require_once('./bdd/bdd_co.php');
+
 // Variable globale a la page
 $title = "Accueil M2L";
 $description = "Ma description";
+
+
 ?>
 
 <?php
@@ -10,22 +15,47 @@ $description = "Ma description";
     <form class="loginform" method="POST" action="./form/register.form.php">
         <h1>Inscription</h1>
 
-        <div class="alert-danger">
-            <p>Une erreur est survenue</p>
-        </div>
+        <?php
+            if(isset($_SESSION['flash'])) {
+                ?>
+                <div class="alert-danger">
+                    <p><?= $_SESSION['flash'] ?></p>
+                </div>
+                <?php
+                session_unset();
+
+            };
+        ?>
+
 
         <label for="regid">Identifiant</label><br>
         <input maxlength="40" name="login" type="text" id="regid" required>
 
         <label for="regem">Email</label><br>
-        <input maxlength="40" name="email" type="text" id="regem" required><br>    
+        <input maxlength="40" name="email" type="email" id="regem" required><br>    
 
 
-        <label for="ligue">Selectionez votre ligue</label>
+        <label for="ligue">Sélectionnez votre ligue</label>
         <select name="ligue" id="ligue">
-            <option value="0">Football</option>
-            <option value="1">Handball</option>
-            <option value="2">Takewondo</option>
+        <?php 
+            $dbh = db_connect();
+            $sql = "SELECT id_ligue, lib_ligue FROM `ligue`";
+            try {
+                $sth = $dbh->prepare($sql);
+                $sth->execute();
+                $rows= $sth->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $ex) {
+                die("Erreur lors de la requête SQL : " . $ex->getMessage());
+            }
+
+            if (count($rows) > 0) {
+                foreach($rows as $row){
+                    ?>
+                    <option value="<?= $row['id_ligue'] ?>"><?= $row['lib_ligue'] ?></option>
+                    <?php
+                }
+            }
+        ?>
         </select>
 
         <label for="regpwd">Mot de passe</label><br>

@@ -1,30 +1,15 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'appfaq';
-$username = 'root';
-$password = '';
-try {
-$dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-echo "Connexion réussie !";
-}
-catch (PDOException $ex)
-{
-die("Erreur lors de la connexion SQL : " . $ex->getMessage());
-}
-
-$id = 3;
-$sql = "SELECT * FROM `user` WHERE id_user=:id";
-try {
-    $sth = $dbh->prepare($sql);
-    $sth->execute(array(':id' => $id));
-    $row = $sth->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $ex) {
-    die("Erreur lors de la requête SQL : " . $ex->getMessage());
-}
-
-if ($row) {
-    echo "<p>" . $row['pseudo'] . "</p>";
-}
-
+function db_connect() {
+    $dsn = 'mysql:host=localhost;dbname=appfaq';  // contient le nom du serveur et de la base
+    $user = 'root';
+    $password = '';
+    try {
+      $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $ex) {
+      die("Erreur lors de la connexion SQL : " . $ex->getMessage());
+    }
+    return $dbh;
+  }
 ?>

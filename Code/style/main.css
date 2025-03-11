@@ -15,7 +15,7 @@ body {
 
 .alert-danger {
     width: 100%;
-    height: 50px;
+    height: auto;
     background-color: #ff4757;
     border-radius: 6px;
     color: white;
