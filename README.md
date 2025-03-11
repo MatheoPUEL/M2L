@@ -85,7 +85,7 @@ Documents
 ---
 
 ## **Comptes de connexion par défaut**  
-| **Rôle**         | **Identifiant**     | **Mot de passe** | ** Email ** |
+| **Rôle**         | **Identifiant**     | **Mot de passe** | **Email** |
 |-------------------|---------------------|-------------------|------------------- |
 | **Administrateur**| `Admin`            | `admin`           | `admin@m2l.com`|
 | **Utilisateur**   | `User`             | `user`            |`user@m2l.com`|
