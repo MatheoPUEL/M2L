@@ -52,7 +52,7 @@ CREATE TABLE `ligue` (
 --
 
 INSERT INTO `ligue` (`id_ligue`, `lib_ligue`) VALUES
-(1, 'Toutes les ligues')
+(1, 'Toutes les ligues'),
 (2, 'Football'),
 (3, 'Basket'),
 (4, 'Volley'),
