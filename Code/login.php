@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Variable globale a la page
 $title = "Accueil M2L";
 $description = "Ma description";
@@ -10,9 +11,17 @@ $description = "Ma description";
     <form class="loginform" method="POST" action="./form/login.form.php">
         <h1>Connexion</h1>
 
-        <div class="alert-danger">
-            <p>Mot de passe incorrect</p>
-        </div>
+        <?php
+            if(isset($_SESSION['flash'])) {
+                ?>
+                <div class="alert-danger">
+                    <p><?= $_SESSION['flash'] ?></p>
+                </div>
+                <?php
+                session_unset();
+
+            };
+        ?>
 
         <label for="logid">Identifiant</label><br>
         <input name="login" type="text" id="logid" required><br>

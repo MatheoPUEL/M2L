@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `faq` (
   `id_faq` bigint(11) NOT NULL,
   `question` text NOT NULL,
-  `reponse` text NOT NULL,
+  `reponse` text NULL,
   `dat_question` datetime NOT NULL,
-  `dat_reponse` datetime NOT NULL,
+  `dat_reponse` datetime NULL,
   `id_user` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -44,19 +44,21 @@ CREATE TABLE `faq` (
 
 CREATE TABLE `ligue` (
   `id_ligue` bigint(11) NOT NULL,
-  `lib_ligue` varchar(50) NOT NULL
+  `lib_ligue` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `ligue`
 --
 
-INSERT INTO `ligue` (`id_ligue`, `lib_ligue`) VALUES
-(1, 'Toutes les ligues'),
-(2, 'Football'),
-(3, 'Basket'),
-(4, 'Volley'),
-(5, 'Handball');
+INSERT INTO `ligue` (`id_ligue`, `lib_ligue`, `image`, `description`) VALUES
+(1, 'Toutes les ligues', 'no.png', 'no_desc'),
+(2, 'Football', 'football.png', "Notre club de football dispose de plusieurs terrains d'entraînement et de matchs. Si vous souhaitez nous rencontrer, observer un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre terrain pour venir nous voir."),
+(3, 'Basket', 'basket.png', "Notre club de basketball offre des terrains modernes pour les entraînements et les matchs. Si vous souhaitez assister à une séance d'entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre salle de sport où nous serons heureux de vous accueillir."),
+(4, 'Volley', 'volley.png', "Notre club de volleyball met à votre disposition des terrains spécialement conçus pour l'entraînement et les compétitions. Si vous souhaitez découvrir nos entraînements ou inscrire votre enfant, n'hésitez pas à venir nous rencontrer à l'adresse indiquée ci-dessus."),
+(5, 'Handball', 'handball.png', "Notre club de handball propose des terrains adaptés pour les entraînements et les matchs. Si vous souhaitez voir comment se déroule un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre complexe sportif où nous serons ravis de vous rencontrer.");
 -- --------------------------------------------------------
 
 --

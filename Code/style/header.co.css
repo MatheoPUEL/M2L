@@ -3,13 +3,13 @@ nav {
     align-items: center;
     justify-content: space-between;
     width: 95%;
-z-index: 99;
+    z-index: 99;
     position: relative;
     background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(240,234,210,1) 15%);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, #FEFAE0 15%);
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 100px;
+    margin-bottom: 35px;
 
 }
 nav div {

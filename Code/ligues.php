@@ -1,9 +1,22 @@
 <?php
+session_start();
 // Variable globale a la page
-$title = "TENNIS CLUB";
-$description = "Ma description";
 
-$localisation = "Notre club de tennis possède plusieurs terrains d'entrainement et de matchs. Si vous souhaitez nous rencontrer, afin de voir comment se deroule un entrainement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse du terrain où nous retrouver.";
+if(isset($_GET['id'])) {
+    require_once('./bdd/bdd_co.php');
+    $dbh = db_connect();
+    $sql_ligue = "SELECT * FROM ligue WHERE id_ligue = :id";
+    try {
+        $sth = $dbh->prepare($sql_ligue);
+        $sth->execute([":id" => $_GET['id']]);
+        $ligueData = $sth->fetch(PDO::FETCH_ASSOC); // Récupérer toutes les données de l'utilisateur
+    } catch (PDOException $ex) {
+        die("Erreur lors de la requête SQL : " . $ex->getMessage());
+    }
+    $title = $ligueData['lib_ligue'];
+    $description = $ligueData['description'];
+}
+
 $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une question, n'hésitez pas, nous y répondrons dans les plus brefs délais. <br><small>*Si votre question ne respecte pas les règles du site ou n'est pas posée dans la bonne section du site, celle-ci sera supprimée.</small>";
 ?>
 
@@ -29,7 +42,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
     <section class="grid-location" id="localisation">
         <div class="content-loc">
             <h1>Localisation</h1>
-            <p><?= $localisation ?></p>
+            <p><?= $description ?></p>
         </div>
         <div class="media-loc">
             <iframe width="650" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=450&amp;height=450&amp;hl=en&amp;q=13%20Rue%20Jean%20Moulin,%2054510%20Tomblaine+(Maison%20des%20ligues)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
@@ -53,66 +66,66 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
          <h1>Les questions déjà posées</h1>
             <!-- A répeter pour le foreach des questions -->
              <!-- ajouter la classe no-response si il y a pas de réponse a la question qui est posé -->
-        <div class="question-post">
-            <div class="question-header">
-                <div><p>Jhon doe</p></div>
-                <div>
-                    <ul class="question-date_info">
-                        <li>23-04-2024</li>
-                        <li>11h50</li>
-                    </ul>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
-        </div>
 
-        <div class="response">
-            <div class="question-header">
-                <div><p>Admin</p></div>
-                <div>
-                    <ul class="question-date_info">
-                        <li>23-04-2024</li>
-                        <li>14h30</li>
-                    </ul>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
-        </div>
+        <?php
+        require_once ('./bdd/bdd_co.php');
+        $dbh = db_connect();
+        $sql = "SELECT faq.question, faq.reponse, faq.dat_question, faq.dat_reponse, user.pseudo
+                FROM faq 
+                INNER JOIN user on faq.id_user = user.id_user;";
 
-        <div class="question-post">
-            <div class="question-header">
-                <div><p>Jhon doe</p></div>
-                <div>
-                    <ul class="question-date_info">
-                        <li>23-04-2024</li>
-                        <li>11h50</li>
-                    </ul>
-                </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
-            <!-- Afficher seulement si on est administrateur -->
-            <div class="question-footer">
-                <button onclick="window.location.href = './form/deleteMessage.form.php';" class="red"><i class="fa-solid fa-trash"></i> &nbsp; Supprimer</button>
-                <button onclick="window.location.href = './admin_respond.php';" class="blue"><i class="fa-solid fa-reply"></i> &nbsp; Répondre</button>
-            </div>
-        </div>
+        try {
+            $sth = $dbh->prepare($sql);
+            $sth->execute();
+            $rows= $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            die("Erreur lors de la requête SQL : " . $ex->getMessage());
+        }
 
-        <div class="question-post">
-            <div class="question-header">
-                <div><p>Jhon doe</p></div>
-                <div>
-                    <ul class="question-date_info">
-                        <li>23-04-2024</li>
-                        <li>11h50</li>
-                    </ul>
+        if (count($rows) > 0) {
+            foreach($rows as $row){
+                $dat_question = new DateTime($row['dat_question']);
+                $dat_dmy = $dat_question->format('d-m-Y');
+                $dat_mh = $dat_question->format('m:H')
+                ?>
+                <div class="question-post">
+                    <div class="question-header">
+                        <div><p><?= $row['pseudo'] ?></p></div>
+                        <div>
+                            <ul class="question-date_info">
+                                <li><?= $dat_dmy ?></li>
+                                <li><?= $dat_mh ?></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p><?= $row['question'] ?></p>
                 </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
-            <!-- Afficher seulement si c'est l'utilisateur qui a posté le message -->
-            <div class="question-footer">
-                <button onclick="window.location.href = './editMessage.php';" type="submit" class="blue"><i class="fa-solid fa-edit"></i> &nbsp; Editer</button>
-            </div>
-        </div>
+
+                <?php
+                if ($row['reponse'] != "") {
+                    $dat_reponse = new DateTime($row['dat_reponse']);
+                    $dat_dmy = $dat_reponse->format('d-m-Y');
+                    $dat_mh = $dat_reponse->format('m:H')
+                    ?>
+                    <div class="response">
+                        <div class="question-header">
+                            <div><p>Admin</p></div>
+                            <div>
+                                <ul class="question-date_info">
+                                    <li><?= $dat_dmy ?></li>
+                                    <li><?= $dat_mh ?></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
+                    </div>
+                    <?php
+                }
+            }
+        }
+        ?>
+
+                
 
     </section>
 <?php

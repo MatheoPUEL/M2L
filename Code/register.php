@@ -50,9 +50,11 @@ $description = "Ma description";
 
             if (count($rows) > 0) {
                 foreach($rows as $row){
-                    ?>
-                    <option value="<?= $row['id_ligue'] ?>"><?= $row['lib_ligue'] ?></option>
-                    <?php
+                    if ($row['id_ligue'] > 1) {
+                        ?>
+                        <option value="<?= $row['id_ligue'] ?>"><?= $row['lib_ligue'] ?></option>
+                        <?php
+                    }
                 }
             }
         ?>

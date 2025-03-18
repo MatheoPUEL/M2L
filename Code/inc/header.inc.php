@@ -17,10 +17,15 @@
     <nav>
         <h1><a href="./index.php"><img width="50px" src="./img/logo.svg" alt="logoM2L"></a></h1>
         <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#localisation">Localisation</a>
-            <a href="#faq">FAQ</a>
-            <a href=""><i class="fa-solid fa-right-from-bracket"></i></a>
+            <?php
+                if(isset($_SESSION['user'])) { ?>
+                    <a href="./ligues.php?id=<?= $_SESSION['ligue'] ?>">Ma ligue</a>
+                    <a href=""><?= $_SESSION['user'] ?></a>
+                    <a href="./deconnexion.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <?php } else { ?>
+                    <a href="./login.php">Se Connecter</a>
+                    <a href="./register.php">S'inscrire</a>
+            <?php  } ?>
         </div>
     </nav>
 
