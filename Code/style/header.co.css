@@ -13,16 +13,19 @@ nav {
 
 }
 nav div {
-    width: 300px;
     display: flex;
     justify-content:space-between ;
-    }
+    align-items: center;}
 
 nav div a {
-    margin-left: 10px;
+    margin-left: 50px;
     color: black;
     text-decoration: none;
     transition-duration: 0.3s;
+}
+nav div p {
+    margin-left: 50px;
+    color: black;
 }
 nav div a:hover {
     color: rgb(74, 74, 74);

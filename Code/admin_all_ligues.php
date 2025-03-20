@@ -1,9 +1,21 @@
 <?php
-// Variable globale a la page
-$title = "Index";
-$description = "Ma description";
-?>
+session_start();
+require_once('./bdd/bdd_co.php');
+$dbh = db_connect();
+$sql = "SELECT faq.id_faq, ligue.lib_ligue, faq.question, faq.reponse, faq.dat_question, faq.dat_reponse, user.pseudo, faq.id_user, user.id_ligue
+                FROM faq 
+                INNER JOIN user on faq.id_user = user.id_user
+                INNER JOIN ligue on user.id_ligue = ligue.id_ligue
+                ORDER BY faq.dat_question desc;";
+try {
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $rows= $sth->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $ex) {
+    die("Erreur lors de la requête SQL : " . $ex->getMessage());
+}
 
+?>
 <?php
 require_once('./inc/header.inc.php')
 ?>
@@ -40,7 +52,7 @@ require_once('./inc/header.inc.php')
     }
 
 
-    button {
+    td a {
         border: none;
         width: 50px;
         height: 50px;
@@ -49,20 +61,28 @@ require_once('./inc/header.inc.php')
         color: #FFFFFF;
 
         transition-duration: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+
     }
-    button:hover {
+
+    td a:hover {
         cursor: pointer;
         opacity: 80%;
     }
-    button .red {
+    a .red {
         background-color: red;
     }
-    button .blue {
+    a .blue {
         background-color: #405cf5;
     }
 
 </style>
 <div class="container" style="width: 80%; position: relative; left: 50%; transform: translateX(-50%)">
+
+
     <table>
         <tr>
             <th>Utlisateur</th>
@@ -71,24 +91,28 @@ require_once('./inc/header.inc.php')
             <th>Message</th>
             <th>Actions</th>
         </tr>
-        <tr>
-            <td>Jhon doe</td>
-            <td>Football</td>
-            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut corporis cum dolorem enim expedita harum iste labore mollitia natus nihil nobis, obcaecati odit praesentium qui quis voluptas voluptate.</td>
-            <td class="actions">
-                <button class="red"><i class="fa-solid fa-trash"></i></button>
-                <button class="blue"><i class="fa-solid fa-reply"></i></button>
-            </td>
-        </tr>
-        <tr>
-            <td>Jhon doe</td>
-            <td>Takewondo</td>
-            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aut corporis cum dolorem enim expedita harum iste labore mollitia natus nihil nobis, obcaecati odit praesentium qui quis voluptas voluptate.</td>
-            <td class="actions">
-                <button class="red"><i class="fa-solid fa-trash"></i></button>
-                <button class="blue"><i class="fa-solid fa-reply"></i></button>
-            </td>
-        </tr>
+        <?php
+
+            foreach($rows as $row){
+                ?>
+                <tr>
+                    <td><?= $row['pseudo'] ?></td>
+                    <td><?= $row['lib_ligue'] ?></td>
+                    <td><?= $row['question'] ?></td>
+                    <td class="actions">
+                        <a class="red" href="./form/deleteMessage.form.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$row['id_ligue']?>"><i class="fa-solid fa-trash"></i></a>
+                        <?php
+                        if($row['reponse'] == null) {
+                        ?>
+                            <a class="blue" href="./admin_respond.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$row['id_ligue']?>"><i class="fa-solid fa-reply"></i></a>
+                        <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
+        ?>
 
     </table>
 

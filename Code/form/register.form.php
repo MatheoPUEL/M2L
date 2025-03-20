@@ -27,15 +27,15 @@ if ($mdp == $mdp_confirm) {
 
     // Je fait une requette qui permet de savoir si le mail de l'utilisateur est déjà dans la db
 
-    $sql_check_email = "SELECT COUNT(*) FROM user WHERE mail = :email";
+    $sql_check_email = "SELECT COUNT(*) FROM user WHERE mail = :email or pseudo = :pseudo";
     $get_email = $dbh->prepare($sql_check_email);
-    $get_email->execute([':email'=>$email]);
+    $get_email->execute([':email'=>$email, ':pseudo'=>$username]);
     $email_exists = $get_email->fetchColumn();
 
     // Si le mail est déja dans la db je redirige l'utilisateur vers la page d'inscription et lui affiche un message. 
 
     if ($email_exists > 0) {
-        $_SESSION['flash'] = "L'email est déjà utilisé par un autre utilisateur.";
+        $_SESSION['flash'] = "L'email ou le pseudo est déjà utilisé par un autre utilisateur.";
         header("Location: ../register.php");
         exit();
     } else { 
@@ -45,7 +45,12 @@ if ($mdp == $mdp_confirm) {
         $sql = "INSERT INTO user (pseudo, mdp, mail, id_usertype, id_ligue)
         VALUES ('".$username."', '".$hash_mdp."', '".$email."', 1, '".$choix_ligue."')";
         $dbh->exec($sql);
-        header("Location: ../register.php");
+        $user_id = $dbh->lastInsertId();
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['user'] = $username;
+        $_SESSION['ligue'] = $choix_ligue;
+   
+        header("Location: ../index.php");
         exit();
     }
 

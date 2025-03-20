@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Variable globale a la page
-$title = "Accueil M2L";
+$title = "Accueil&nbsp;M2L";
 $description = "Ma description";
 
 ?>
@@ -12,12 +12,14 @@ $description = "Ma description";
 
 <header>
         <div>
-            <h1><?= $title ?></h1>
+            <div style="display: flex; flex-direction: row;">
+                <h1><?= $title ?></h1>
+                <img class="right" src="./img/svg/Leftcorner.svg" alt="">
+            </div>
             <img class="bottom" src="./img/svg/Bottomcorner.svg" alt="">
-            <img class="right" style="left: 458px;" src="./img/svg/Leftcorner.svg" alt="">
         </div>
         <img class="img-header" src="./img/menu.jpg" style=" object-fit: cover;" alt="">
-</header>
+    </header>
 <!-- <div class="container">
     <p>Petit Commentaire tous les liens pour la page sont listés ci-dessous. La nav bar est en mode connecté c'est pour ça qu'elle indique tous les liens vers les sections de la page. Si l'utilisateur est déconnecté vous ne trouverez que 2 bouttons un pour se connecter et 1 pour s'inscrire</p>
 

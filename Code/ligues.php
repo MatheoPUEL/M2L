@@ -13,8 +13,17 @@ if(isset($_GET['id'])) {
     } catch (PDOException $ex) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
-    $title = $ligueData['lib_ligue'];
-    $description = $ligueData['description'];
+    $idligue = $ligueData['id_ligue'];
+
+    // Vérifier si l'utilisateur est connecté et si il est bien dans la ligue
+    if(isset($_SESSION['ligue']) && $_SESSION['ligue'] == $idligue || $_SESSION['ligue'] == 1) {
+        $title = $ligueData['lib_ligue'];
+        $description = $ligueData['description'];
+    } else {
+        header('Location: ./index.php');
+    }
+} else {
+    header('Location: ./index.php');
 }
 
 $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une question, n'hésitez pas, nous y répondrons dans les plus brefs délais. <br><small>*Si votre question ne respecte pas les règles du site ou n'est pas posée dans la bonne section du site, celle-ci sera supprimée.</small>";
@@ -23,13 +32,13 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
 <?php
     require_once('./inc/header.inc.php')
 ?>
-
-
     <header>
         <div>
-            <h1><?= $title ?></h1>
+            <div style="display: flex; flex-direction: row;">
+                <h1><?= $title ?></h1>
+                <img class="right" src="./img/svg/Leftcorner.svg" alt="">
+            </div>
             <img class="bottom" src="./img/svg/Bottomcorner.svg" alt="">
-            <img class="right" src="./img/svg/Leftcorner.svg" alt="">
         </div>
         <img class="img-header" src="./img/tennis.jpg" style=" object-fit: cover;" alt="">
     </header>
@@ -50,10 +59,25 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
     </section>
 
     <section class="FAQ" id="faq">
+        <?php
+        $dbh = db_connect();
+
+        
+        // Préparer la requête pour récupérer l'utilisateur et son mot de passe haché
+        $sql_user_message = "SELECT * FROM faq WHERE id_user = :id_user";
+        try {
+            $sthm = $dbh->prepare($sql_user_message);
+            $sthm->execute([":id_user" => $_SESSION["user_id"]]);
+            $userDataMessage = $sthm->fetch(PDO::FETCH_ASSOC); // Récupérer toutes les données de l'utilisateur
+        } catch (PDOException $ex) {
+            die("Erreur lors de la requête SQL : " . $ex->getMessage());
+        }   
+        ?>
         <div class="content-faq">
-            <form method="post" action="./form/addMessage.form.php">
-                <textarea name="message" id="message" rows="10" cols="35" placeholder="Votre message"></textarea>
-                <button class="button">Envoyer</button>
+            <form method="post" action="./form/addMessage.form.php?id=<?=$_GET['id']?>">
+                <textarea <?php if($userDataMessage != null) { ?>disabled<?php } ?> name="question" id="question" rows="10" cols="35" placeholder="Votre message"></textarea>
+                <?php if($userDataMessage != null) { ?><p>Vous ne pouvez plus poster de message sur cette ligue car vous avez déjà posté un message.</p><?php } ?> 
+                <button <?php if($userDataMessage != null) { ?>disabled<?php } ?> class="button">Envoyer</button>
             </form>
         </div>
         <div class="media-faq">
@@ -65,18 +89,19 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
     <section class="questions" id="questions">
          <h1>Les questions déjà posées</h1>
             <!-- A répeter pour le foreach des questions -->
-             <!-- ajouter la classe no-response si il y a pas de réponse a la question qui est posé -->
+            <!-- ajouter la classe no-response si il y a pas de réponse a la question qui est posé -->
 
         <?php
         require_once ('./bdd/bdd_co.php');
         $dbh = db_connect();
-        $sql = "SELECT faq.question, faq.reponse, faq.dat_question, faq.dat_reponse, user.pseudo
+        $sql = "SELECT faq.id_faq, faq.question, faq.reponse, faq.dat_question, faq.dat_reponse, user.pseudo, faq.id_user
                 FROM faq 
-                INNER JOIN user on faq.id_user = user.id_user;";
-
+                INNER JOIN user on faq.id_user = user.id_user
+                WHERE user.id_ligue = :idligue
+                ORDER BY faq.dat_question desc;";
         try {
             $sth = $dbh->prepare($sql);
-            $sth->execute();
+            $sth->execute([":idligue"=>$_GET['id']]);
             $rows= $sth->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
             die("Erreur lors de la requête SQL : " . $ex->getMessage());
@@ -86,17 +111,17 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
             foreach($rows as $row){
                 $dat_question = new DateTime($row['dat_question']);
                 $dat_dmy = $dat_question->format('d-m-Y');
-                $dat_mh = $dat_question->format('m:H')
+                $dat_mh = $dat_question->format('H:i')
                 ?>
                 <div class="question-post">
                     <div class="question-header">
-                        <div><p><?= $row['pseudo'] ?></p></div>
-                        <div>
+                        
+                            <div><p><?= $row['pseudo'] ?> <?php if ($row['id_user'] == $_SESSION['usertype'] > 1  ){ ?><a href="./form/deleteMessage.form.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$_GET['id']?>"> - Supprimer</a><?php } ?> <?php if ($_SESSION['usertype'] > 1 && $row['reponse'] == null ){ ?><a href="./admin_respond.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$_GET['id']?>"> - Répondre</a><?php } ?></p></div>
                             <ul class="question-date_info">
                                 <li><?= $dat_dmy ?></li>
                                 <li><?= $dat_mh ?></li>
                             </ul>
-                        </div>
+                        
                     </div>
                     <p><?= $row['question'] ?></p>
                 </div>
@@ -105,7 +130,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
                 if ($row['reponse'] != "") {
                     $dat_reponse = new DateTime($row['dat_reponse']);
                     $dat_dmy = $dat_reponse->format('d-m-Y');
-                    $dat_mh = $dat_reponse->format('m:H')
+                    $dat_mh = $dat_reponse->format('H:m')
                     ?>
                     <div class="response">
                         <div class="question-header">
@@ -117,7 +142,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
                                 </ul>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste adipisci delectus nobis esse ex quasi facilis hic facere omnis necessitatibus. Eligendi consequuntur, fuga sint eius atque quisquam? Pariatur, non in.</p>
+                        <p><?= $row['reponse'] ?></p>
                     </div>
                     <?php
                 }

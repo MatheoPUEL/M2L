@@ -36,16 +36,21 @@ section h1 {
 section p {
     font-size: large;
 }
+
+.right{
+    height: 55px;
+    position: relative;
+    left: -1px;
+    top: -1px;
+}
 .bottom {
     position: relative;
-    top: -90px;
+    top: 111px;
+    height: 55px;
+    z-index: 99;
     left: -1px;
 }
-.right {
-    position: relative;
-    left: 0px;
-    top: -238px;
-} 
+
 .img-header {
     background-color: white;
 
