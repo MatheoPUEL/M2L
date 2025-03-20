@@ -22,7 +22,7 @@ require_once('./inc/header.inc.php')
 
 <style>
     table {
-
+        width: 100%;
         border-collapse: collapse;
         border-radius: 8px;
         overflow: hidden;

@@ -49,6 +49,7 @@ if ($mdp == $mdp_confirm) {
         $_SESSION['user_id'] = $user_id;
         $_SESSION['user'] = $username;
         $_SESSION['ligue'] = $choix_ligue;
+        $_SESSION['usertype'] = 1;
    
         header("Location: ../index.php");
         exit();
