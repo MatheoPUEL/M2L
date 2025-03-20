@@ -54,11 +54,11 @@ CREATE TABLE `ligue` (
 --
 
 INSERT INTO `ligue` (`id_ligue`, `lib_ligue`, `image`, `description`) VALUES
-(1, 'Toutes les ligues', 'no.png', 'no_desc'),
-(2, 'Football', 'football.png', "Notre club de football dispose de plusieurs terrains d'entraînement et de matchs. Si vous souhaitez nous rencontrer, observer un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre terrain pour venir nous voir."),
-(3, 'Basket', 'basket.png', "Notre club de basketball offre des terrains modernes pour les entraînements et les matchs. Si vous souhaitez assister à une séance d'entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre salle de sport où nous serons heureux de vous accueillir."),
-(4, 'Volley', 'volley.png', "Notre club de volleyball met à votre disposition des terrains spécialement conçus pour l'entraînement et les compétitions. Si vous souhaitez découvrir nos entraînements ou inscrire votre enfant, n'hésitez pas à venir nous rencontrer à l'adresse indiquée ci-dessus."),
-(5, 'Handball', 'handball.png', "Notre club de handball propose des terrains adaptés pour les entraînements et les matchs. Si vous souhaitez voir comment se déroule un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre complexe sportif où nous serons ravis de vous rencontrer.");
+(1, 'Toutes les ligues', 'no.jpg', 'no_desc'),
+(2, 'Football', 'football.jpg', "Notre club de football dispose de plusieurs terrains d'entraînement et de matchs. Si vous souhaitez nous rencontrer, observer un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre terrain pour venir nous voir."),
+(3, 'Basket', 'basket.jpg', "Notre club de basketball offre des terrains modernes pour les entraînements et les matchs. Si vous souhaitez assister à une séance d'entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre salle de sport où nous serons heureux de vous accueillir."),
+(4, 'Volley', 'volley.jpg', "Notre club de volleyball met à votre disposition des terrains spécialement conçus pour l'entraînement et les compétitions. Si vous souhaitez découvrir nos entraînements ou inscrire votre enfant, n'hésitez pas à venir nous rencontrer à l'adresse indiquée ci-dessus."),
+(5, 'Handball', 'handball.jpg', "Notre club de handball propose des terrains adaptés pour les entraînements et les matchs. Si vous souhaitez voir comment se déroule un entraînement ou inscrire votre enfant, vous trouverez ci-dessus l'adresse de notre complexe sportif où nous serons ravis de vous rencontrer.");
 -- --------------------------------------------------------
 
 --

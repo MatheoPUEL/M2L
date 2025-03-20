@@ -14,6 +14,7 @@ if(isset($_GET['id'])) {
         die("Erreur lors de la requête SQL : " . $ex->getMessage());
     }
     $idligue = $ligueData['id_ligue'];
+    $image = $ligueData['image'];
 
     // Vérifier si l'utilisateur est connecté et si il est bien dans la ligue
     if(isset($_SESSION['ligue']) && $_SESSION['ligue'] == $idligue || $_SESSION['ligue'] == 1) {
@@ -40,7 +41,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
             </div>
             <img class="bottom" src="./img/svg/Bottomcorner.svg" alt="">
         </div>
-        <img class="img-header" src="./img/tennis.jpg" style=" object-fit: cover;" alt="">
+        <img class="img-header" src="./img/<?=$image?>" style=" object-fit: cover;" alt="">
     </header>
 
     <section class="services" id="services">
