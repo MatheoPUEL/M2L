@@ -81,8 +81,6 @@ require_once('./inc/header.inc.php')
 
 </style>
 <div class="container" style="width: 80%; position: relative; left: 50%; transform: translateX(-50%)">
-
-
     <table>
         <tr>
             <th>Utlisateur</th>
@@ -101,6 +99,8 @@ require_once('./inc/header.inc.php')
                     <td><?= $row['question'] ?></td>
                     <td class="actions">
                         <a class="red" href="./form/deleteMessage.form.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$row['id_ligue']?>"><i class="fa-solid fa-trash"></i></a>
+                        <a class="blue" href="./editMessage.php?idfaq=<?=$row['id_faq']?>"><i class="fa-solid fa-pen-to-square"></i></a>
+
                         <?php
                         if($row['reponse'] == null) {
                         ?>
@@ -118,11 +118,28 @@ require_once('./inc/header.inc.php')
 
     <h1>Liste des ligues</h1>
     <ul>
-        <li><a href="./ligues.php">Takewondo</a></li>
-        <li><a href="./ligues.php">Football</a></li>
-        <li><a href="./ligues.php">Handball</a></li>
-        <li><a href="./ligues.php">Autre</a></li>
-    </ul>
+        <?php 
+            $dbh = db_connect();
+            $sql = "SELECT id_ligue, lib_ligue FROM `ligue`";
+            try {
+                $sth = $dbh->prepare($sql);
+                $sth->execute();
+                $rows= $sth->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $ex) {
+                die("Erreur lors de la requête SQL : " . $ex->getMessage());
+            }
+
+            if (count($rows) > 0) {
+                foreach($rows as $row){
+                    if ($row['id_ligue'] > 1) {
+                        ?>
+                        <li><a href="./ligues.php?id=<?=$row['id_ligue']?>"><?= $row['lib_ligue'] ?></a></li>
+                        <?php
+                    }
+                }
+            }
+        ?>
+        </ul>
 
 </div>
 

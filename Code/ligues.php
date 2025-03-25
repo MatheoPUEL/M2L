@@ -23,6 +23,10 @@ if(isset($_GET['id'])) {
     } else {
         header('Location: ./index.php');
     }
+
+    if ($_GET['id'] == 1) {
+        header('Location: ./admin_all_ligues.php');
+    }
 } else {
     header('Location: ./index.php');
 }
@@ -60,25 +64,10 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
     </section>
 
     <section class="FAQ" id="faq">
-        <?php
-        $dbh = db_connect();
-
-        
-        // Préparer la requête pour récupérer l'utilisateur et son mot de passe haché
-        $sql_user_message = "SELECT * FROM faq WHERE id_user = :id_user";
-        try {
-            $sthm = $dbh->prepare($sql_user_message);
-            $sthm->execute([":id_user" => $_SESSION["user_id"]]);
-            $userDataMessage = $sthm->fetch(PDO::FETCH_ASSOC); // Récupérer toutes les données de l'utilisateur
-        } catch (PDOException $ex) {
-            die("Erreur lors de la requête SQL : " . $ex->getMessage());
-        }   
-        ?>
         <div class="content-faq">
             <form method="post" action="./form/addMessage.form.php?id=<?=$_GET['id']?>">
-                <textarea <?php if($userDataMessage != null) { ?>disabled<?php } ?> name="question" id="question" rows="10" cols="35" placeholder="Votre message"></textarea>
-                <?php if($userDataMessage != null) { ?><p>Vous ne pouvez plus poster de message sur cette ligue car vous avez déjà posté un message.</p><?php } ?> 
-                <button <?php if($userDataMessage != null) { ?>disabled<?php } ?> class="button">Envoyer</button>
+                <textarea name="question" id="question" rows="10" cols="35" placeholder="Votre message"></textarea>
+                <button class="button">Envoyer</button>
             </form>
         </div>
         <div class="media-faq">
@@ -117,7 +106,7 @@ $faq = "Si vous souhaitez avoir des précisions sur la ligue ou nous poser une q
                 <div class="question-post">
                     <div class="question-header">
                         
-                            <div><p><?= $row['pseudo'] ?> <?php if ($row['id_user'] == $_SESSION['usertype'] > 1  ){ ?><a href="./form/deleteMessage.form.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$_GET['id']?>"> - Supprimer</a><?php } ?> <?php if ($_SESSION['usertype'] > 1 && $row['reponse'] == null ){ ?><a href="./admin_respond.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$_GET['id']?>"> - Répondre</a><?php } ?></p></div>
+                            <div><p><?= $row['pseudo'] ?> <?php if ($row['id_user'] == $_SESSION['usertype'] > 1  ){ ?><a href="./form/deleteMessage.form.php?idfaq=<?=$row['id_faq']?>&idligue=<?=$_GET['id']?>"> - Supprimer</a><a href="./editMessage.php?idfaq=<?=$row['id_faq']?>"> - Modifier</a><?php } ?> <?php if ($_SESSION['usertype'] > 1 && $row['reponse'] == null ){ ?><a href="./admin_respond.php?idfaq=<?=$row['id_faq']?>"> - Répondre</a><?php } ?></p></div>
                             <ul class="question-date_info">
                                 <li><?= $dat_dmy ?></li>
                                 <li><?= $dat_mh ?></li>
