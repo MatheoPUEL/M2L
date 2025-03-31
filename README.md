@@ -29,6 +29,7 @@ Si toutes les étapes sont correctement réalisées, vous aurez accès au site *
 La structure des documents du projet est organisée comme suit :  
 
 ```plaintext
+CommentCode (Le même de le répertoire "Code" mais tout le code est commenté)
 Code
 ├── admin_all_ligues.php
 ├── admin_respond.php
