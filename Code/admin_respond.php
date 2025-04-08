@@ -25,7 +25,7 @@ date_default_timezone_set('Europe/Paris');
 <?php
     require_once('./inc/header.inc.php')
 ?>
-    <form action="./form/admin_rep.form.php?idligue=<?=$_GET['idligue']?>&idfaq=<?= $_GET['idfaq'] ?>" method="post" class="form-container">
+    <form action="./form/admin_rep.form.php?idligue=<?=$_SESSION['ligue']?>&idfaq=<?= $_GET['idfaq'] ?>" method="post" class="form-container">
         <h1>Répondre à <?= $fetch['pseudo'] ?>: </h1>
         <p><?= $fetch['question'] ?></p>
         <textarea name="reponse" id="" rows="10" placeholder="Votre réponse"></textarea>
