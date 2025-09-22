@@ -1,5 +1,6 @@
 # **M2L**  
-
+État du projet: terminé
+Note finale: 20/20
 ## **Description du projet**  
 Chaque ligue sportive possède un site web présentant ses activités. Afin d'améliorer l'interaction avec les internautes, une FAQ appelée **"AppFaq"** a été conçue pour chaque ligue.  
 
@@ -117,3 +118,4 @@ Documents
 - **Martin Noah**  
 
 --- 
+
