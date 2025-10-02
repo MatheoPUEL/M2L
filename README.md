@@ -112,11 +112,12 @@ Documents
 
 **Projet 2024-2025**  
 **Réalisé par :**  
-- **Truwant Gaëtan**  
-- **Puel Mathéo**  
-- **Ramia Noa**  
-- **Martin Noah**  
+- **TRUWANT Gaëtan**  
+- **PUEL Mathéo**  
+- **RAMIA Noa**  
+- **MARTIN Noah**  
 
 --- 
+
 
 
